@@ -1,6 +1,7 @@
 QT += gui websockets svg widgets core
 TARGET = XORDE
 TEMPLATE = app
+CONFIG += qtc_runnable
 
 include("../xoTools/Compilation.pri")
 include("../xoCore/xoCore.pri")
