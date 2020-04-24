@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     auto corePlugins = core.getCorePlugins();
 
     bool uiProvided = false;
-    foreach(QString key, corePlugins.keys())
+    for(QString key : corePlugins.keys())
     {
         qDebug() << "loading" << key;
 
