@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         if (str.compare("XORDE.exe", Qt::CaseInsensitive) == 0)
         {
             processCount++;
-            if (processCount > 1)
+            if (processCount >1)
             {
                 AppHelper::warningMessage(QCoreApplication::translate("Generic", "XORDE уже запущена"));
                 return 0;
@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
         }
     }
 #endif
-
 
     QCoreApplication::setOrganizationName("Neurobotics");
     QCoreApplication::setOrganizationDomain("xorde.org");
