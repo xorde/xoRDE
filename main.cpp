@@ -9,6 +9,8 @@
 
 int main(int argc, char *argv[])
 {
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts, true);
+
     QApplication application(argc, argv);
 #ifdef Q_OS_WIN
     int processCount = 0;
