@@ -35,28 +35,7 @@ int main(int argc, char *argv[])
 
     QDir::setCurrent(QCoreApplication::applicationDirPath());
 
-    Core core;
+    Core::Instance()->init();
 
-    core.loadCorePlugins();
-
-    auto corePlugins = core.getCorePlugins();
-
-    bool uiProvided = false;
-    for(QString key : corePlugins.keys())
-    {
-        qDebug() << "loading" << key;
-
-        xoCorePlugin *corePlugin = corePlugins[key];
-        corePlugin->start();
-        if (corePlugin->providesUI())
-        {
-            uiProvided = true;
-        }
-    }
-    if (!uiProvided)
-    {
-        auto console = new xoPrimitiveConsole();
-        console->show();
-    }
     return application.exec();
 }
