@@ -1,6 +1,9 @@
-#include "Core.h"
 #include <QApplication>
 #include <QFontDatabase>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+
+#include "Core.h"
 #include "apphelper.h"
 #include "fileutilities.h"
 #include "xoCorePlugin.h"
@@ -35,7 +38,19 @@ int main(int argc, char *argv[])
 
     QDir::setCurrent(QCoreApplication::applicationDirPath());
 
-    Core::Instance()->init();
+    QCommandLineOption configPathOption(QStringList{"p", "config_path"}, QObject::tr("sets path to xoRDE launch config"), "path");
+
+    QCommandLineParser parser;
+    parser.setApplicationDescription("Test helper");
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.addOption(configPathOption);
+    parser.process(application);
+
+    QString configPath;
+    if(parser.isSet(configPathOption)) configPath = parser.value(configPathOption);
+
+    Core::Instance()->init(configPath);
 
     return application.exec();
 }
