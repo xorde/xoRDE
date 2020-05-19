@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     QString configPath;
     if(parser.isSet(configPathOption)) configPath = parser.value(configPathOption);
 
-//    Core::Instance()->init(configPath);
+    Core::Instance()->init(configPath);
 
     return application.exec();
 }
